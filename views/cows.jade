@@ -1,0 +1,23 @@
+ul
+    for cow in cows
+        li
+            a(href='/cow/#{cow.id}') #{cow.name}
+form(method='get', action='/cows')
+    label(for='name') Add new cow
+    input(
+        id='name'
+        type='text'
+        placeholder='cow name'
+    )
+    label(for='id') Add new cow
+    input(
+        id='id'
+        type='text'
+        placeholder='cow id'
+    )
+    input(
+        type='submit'
+        name='button'
+        value='Add new cow'
+    )
+
