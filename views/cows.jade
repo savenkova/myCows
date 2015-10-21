@@ -5,11 +5,12 @@ ul
             a(href='/cow/#{cow.id}') #{cow.name}
 
 h2 Можешь добавить свою:
-form(method='get', action='/cows')
+form(method='post', action='/cows', enctype="multipart/form-data")
     p
         label(for='name') Имя коровки:
         input(
             id='name'
+            name='name'
             type='text'
             placeholder=''
         )
@@ -17,12 +18,12 @@ form(method='get', action='/cows')
         label(for='id') IDшник коровки:
         input(
             id='id'
+            name='id'
             type='text'
             placeholder=''
         )
     input(
         type='submit'
-        name='button'
         value='Добавить новую'
     )
 
