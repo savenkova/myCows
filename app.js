@@ -10,6 +10,7 @@ var express = require('express'),
 //сохраняем в новоую переменную JSON с коровами
 var getCows = db.get();
 
+
 app.set('views',  __dirname + '/views');
 app.set('view engine', 'jade');
 
@@ -28,8 +29,10 @@ router.get('/cows', function (req, res) {
     res.render('cows',{"cows" : getCows});
 });
 
-router.post('/cows', upload.array(), function (req, res, next) {
-
+//добавляем корову
+router.post('/cows', upload.array(), function (req, res) {
+    db.add(req.body);
+    res.redirect('/cows');
 });
 
 // для каждой коровы по idшнику выделяется url, на котором видим вьюшку, заполненную коровой с соответсвующим id
@@ -42,7 +45,6 @@ router.get('/cow/:id', function (req, res) {
 });
 
 app.use(router);
-
 app.use(multer({dest:'./uploads/'}).array('multiInputFileName'));
 app.use(express.static(__dirname + '/public'));
 app.listen(3000, function () {
