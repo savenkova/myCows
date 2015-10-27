@@ -1,29 +1,28 @@
-h2 Коровки которые у нас уже есть:
-ul
-    for cow in cows
-        li
-            a(href='/cow/#{cow.id}') #{cow.name}
+html
+    head
+        title!= title
+        link(rel="stylesheet" href="style.css")
+    body
+        h2 Коровки которые у нас уже есть:
+        ul
+            for cow in cows
+                li
+                    a(href='/cow/#{cow._id}') #{cow.name}
+                    | &nbsp
+                    a.close(href='/cow/#{cow._id}/delete') &#215;
 
-h2 Можешь добавить свою:
-form(method='post', action='/cows', enctype="multipart/form-data")
-    p
-        label(for='name') Имя коровки:
-        input(
-            id='name'
-            name='name'
-            type='text'
-            placeholder=''
-        )
-    p
-        label(for='id') IDшник коровки:
-        input(
-            id='id'
-            name='id'
-            type='text'
-            placeholder=''
-        )
-    input(
-        type='submit'
-        value='Добавить новую'
-    )
+        h2 Можешь добавить свою:
+        form(method='post', action='/cows', enctype="multipart/form-data")
+            p
+                label(for='name') Имя коровки:
+                input(
+                    id='name'
+                    name='name'
+                    type='text'
+                    placeholder=''
+                )
+            input(
+                type='submit'
+                value='Добавить новую'
+            )
 

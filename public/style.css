@@ -1,3 +1,10 @@
 body {
     color: #2d2d2d;
 }
+a {
+    text-decoration: none;
+}
+a.close {
+    color: #000;
+    font-weight: bold;
+}
